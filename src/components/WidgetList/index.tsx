@@ -1,6 +1,6 @@
 // src/components/WidgetList/index.tsx
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
@@ -28,18 +28,18 @@ const WidgetList = (): JSX.Element => {
     open: boolean;
   }>({ message: '', type: 'success', open: false });
 
-  const loadWidgets = async () => {
+  const loadWidgets = useCallback(async () => {
     try {
       const data = await fetchAllWidgets();
       setWidgets(data);
     } catch (error) {
-      showNotification('Error loading widgets', 'error');
+      console.error('Error fetching widgets', error);
     }
-  };
+  }, []);
 
   useEffect(() => {
     loadWidgets();
-  }, []);
+  }, [loadWidgets]);
 
   const showNotification = (message: string, type: 'success' | 'error') => {
     setNotification({ message, type, open: true });
