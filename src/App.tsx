@@ -1,13 +1,19 @@
-import React from 'react'
-import './App.css'
-import Stack from '@mui/material/Stack'
+// App.tsx
 
-import WidgetList from './components/WidgetList'
+import React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import WidgetList from './components/WidgetList';
 
-const App = (): JSX.Element => {
-  return (<Stack>
-    <WidgetList></WidgetList>
-  </Stack>)
+const theme = createTheme();
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <WidgetList />
+    </ThemeProvider>
+  );
 }
 
-export default App
+export default App;
