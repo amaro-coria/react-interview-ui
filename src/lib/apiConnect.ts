@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const API_BASE_URL = '/v1/widgets'; 
+const API_BASE_URL = '/v1/widgets';
 
 export interface Widget {
   name: string;
